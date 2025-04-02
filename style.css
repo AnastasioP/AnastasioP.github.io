@@ -1,0 +1,317 @@
+:root {
+      --primary-color: #0d6efd; /* Bootstrap primary blue */
+      --secondary-color: #6c757d; /* Bootstrap secondary grey */
+      --dark-bg: #121212;
+      --darker-bg: #1a1a1a;
+      --light-text: #e0e0e0;
+      --dark-text: #333;
+      --accent-color: #FF0066; /* Example accent */
+      --card-bg: #212121;
+      --border-color: #333;
+    }
+
+    body {
+      background-color: var(--dark-bg);
+      color: var(--light-text);
+      font-family: 'Poppins', sans-serif;
+      padding-top: 56px; /* Adjust for fixed navbar height */
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+    }
+
+    .section-title {
+      color: var(--primary-color);
+      font-weight: 700;
+      position: relative;
+      padding-bottom: 10px;
+      margin-bottom: 40px; /* Increased margin */
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: var(--accent-color);
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Navbar */
+    .navbar {
+      transition: background-color 0.3s ease;
+    }
+    .navbar-brand {
+      font-weight: 700;
+    }
+    .nav-link {
+      color: rgba(255, 255, 255, 0.7) !important;
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--light-text) !important;
+    }
+
+    /* Hero Section */
+    #hero {
+      min-height: calc(100vh - 56px); /* Full viewport height minus navbar */
+      background-color: var(--dark-bg); /* Can add gradient or image */
+      position: relative;
+      overflow: hidden; /* Contain SVGs */
+    }
+
+    #hero h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      color: var(--light-text);
+    }
+
+    #hero h2 {
+      font-size: 1.8rem;
+      color: var(--secondary-color);
+      font-weight: 300;
+    }
+
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 5px solid var(--accent-color);
+      object-fit: cover;
+      box-shadow: 0 0 20px rgba(255, 0, 102, 0.5);
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 20px rgba(255, 0, 102, 0.5); }
+      50% { box-shadow: 0 0 30px rgba(255, 0, 102, 0.8); }
+      100% { box-shadow: 0 0 20px rgba(255, 0, 102, 0.5); }
+    }
+
+    /* Typewriter */
+    #typewriter {
+      color: var(--primary-color);
+      font-weight: 600;
+      border-right: 2px solid var(--light-text); /* Blinking cursor */
+      padding-right: 4px;
+      animation: blinkCursor 0.7s steps(1) infinite;
+      white-space: nowrap; /* Keep text on one line during typing */
+      overflow: hidden; /* Hide text until typed */
+    }
+
+    @keyframes blinkCursor {
+      from, to { border-color: transparent; }
+      50% { border-color: var(--light-text); }
+    }
+
+    /* Hero SVG Blob */
+    .hero-svg-blob {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        max-width: 600px;
+        height: auto;
+        z-index: 0;
+        opacity: 0.1;
+        filter: blur(10px); /* Soften the blob */
+    }
+
+    #hero .container {
+        z-index: 1; /* Ensure content is above SVG */
+    }
+
+
+    /* Services Section */
+    #services {
+      background-color: var(--darker-bg);
+    }
+
+    .service-card {
+      background-color: var(--card-bg);
+      padding: 30px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%; /* Ensure cards have same height */
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .service-icon svg {
+      color: var(--primary-color);
+      transition: color 0.3s ease;
+    }
+
+    .service-card:hover .service-icon svg {
+      color: var(--accent-color);
+    }
+
+    .service-card h3 {
+      color: var(--light-text);
+      margin-bottom: 15px;
+    }
+
+    .service-card p {
+      color: var(--secondary-color);
+      font-size: 0.95rem;
+    }
+
+    /* Portfolio Section */
+    #portfolio {
+      background-color: var(--dark-bg);
+    }
+
+    .portfolio-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .portfolio-item img {
+      display: block;
+      width: 100%;
+      transition: transform 0.4s ease;
+    }
+
+    .portfolio-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .portfolio-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+      color: var(--light-text);
+      padding: 30px 20px 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .portfolio-item:hover .portfolio-info {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .portfolio-info h4 {
+      margin-bottom: 5px;
+      font-size: 1.2rem;
+    }
+
+    .portfolio-info p {
+      font-size: 0.9rem;
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Contact Section */
+    #contact {
+      background-color: var(--darker-bg);
+      overflow: hidden; /* Contain SVG */
+    }
+
+    .contact-svg-shape {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: auto; /* Maintain aspect ratio */
+        z-index: 0;
+        opacity: 0.5; /* Adjust opacity */
+    }
+
+    #contact .container {
+        z-index: 1; /* Ensure form is above SVG */
+    }
+
+    #contact-form label {
+      color: var(--secondary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    #contact-form .form-control {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      color: var(--light-text);
+      padding: 0.75rem 1rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #contact-form .form-control:focus {
+      background-color: var(--card-bg);
+      color: var(--light-text);
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25); /* Use Bootstrap's focus color */
+    }
+
+    #contact-form .form-control::placeholder {
+      color: var(--secondary-color);
+      opacity: 0.7;
+    }
+
+    .custom-btn {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      padding: 10px 25px;
+      font-weight: 600;
+      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .custom-btn:hover {
+      background-color: #0b5ed7; /* Darker shade of primary */
+      border-color: #0a58ca;
+      transform: translateY(-2px);
+    }
+
+    #form-message {
+      margin-top: 15px;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark-bg) !important; /* Override Bootstrap */
+      border-top: 1px solid var(--border-color);
+    }
+
+    /* Animations (Simple Fade-in) */
+    section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      #hero h1 {
+        font-size: 2.5rem;
+      }
+      #hero h2 {
+        font-size: 1.5rem;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+      .hero-svg-blob {
+        width: 100%;
+        opacity: 0.05;
+      }
+    }
